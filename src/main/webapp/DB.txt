@@ -1,0 +1,56 @@
+create table MV_info(
+MV_number varchar2(10) primary key,
+MV_name varchar2(50) not null,
+MV_poster varchar2(100),
+MV_star number(2),
+MV_director varchar2(20) not null,
+MV_actor varchar2(50) not null,
+MV_story varchar2(500) not null,
+MV_price number(10) not null,
+MV_open_date date,
+MV_genre varchar2(10),
+MV_nationality varchar(10),
+MV_age varchar2(10),
+MV_runningtime varchar2(10)
+);
+
+create table MV_Reservation_info(
+MV_number varchar2(10) primary key,
+MV_class number(2) not null,
+MV_seats_num number(3) not null,
+MV_date date,
+MV_start_time date,
+MV_end_time date
+);
+
+
+create table User_join(
+User_id varchar2(10) primary key,
+User_password varchar2(20) not null,
+User_name varchar2(10) not null,
+User_grade number(1) default 0, -- 1:사용자, 2:관리자
+User_phone_number varchar2(15),
+User_email varchar2(20),
+User_gender number(1), -- 1:남자,2:여자
+User_age number(3),
+User_preference varchar2(10)
+);
+
+create table User_INFO(
+User_id varchar2(10) primary key,
+MV_number varchar2(10),
+RV_number number(4)
+);
+
+create table RV_info(
+RV_number number(4) primary key,
+RV_writeday date default sysdate,
+RV_title varchar2(30),
+RV_content varchar2(500),
+RV_star number(2),
+RV_like number(1),
+RV_unlike number(1)
+);
+
+create sequence RV_number_seq; -- 리뷰번호 시퀀스 처리
+--insert 시 RV_number = RV_number_seq.nextval값
