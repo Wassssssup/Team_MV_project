@@ -4,7 +4,6 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperFactoryBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -12,15 +11,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import kr.co.ezenac.mapper.BoardMapper;
-import kr.co.ezenac.mapper.TopMenuMapper;
-import kr.co.ezenac.service.TopMenuService;
+import kr.co.ezenac.mapper.MovieMapper;
 
 //Spring MVC 프로젝트에 관련된 설정을 하는 클래스
 @Configuration
@@ -45,9 +41,6 @@ public class ServletAppContext implements WebMvcConfigurer{
 	
 	@Value("${db.password}")
 	private String db_password;
-	
-	@Autowired
-	private TopMenuService topMenuService;
 	
 	//xml을 이용할 때 servlet-context의 앞뒤 반환하는 역할을 하는 부분.
 	//Controller의 메서드가 반환하는 jsp의 이름 앞뒤에 확장자를 붙여주도록 한다.
@@ -87,15 +80,15 @@ public class ServletAppContext implements WebMvcConfigurer{
 		
 		// 쿼리문 실행을 위한 객체(Mapper 관리)
 		@Bean
-		public MapperFactoryBean<BoardMapper> getBoardMapper(SqlSessionFactory factory) throws Exception{
-			MapperFactoryBean<BoardMapper> factoryBean = new MapperFactoryBean<BoardMapper>(BoardMapper.class);
+		public MapperFactoryBean<MovieMapper> getBoardMapper(SqlSessionFactory factory) throws Exception{
+			MapperFactoryBean<MovieMapper> factoryBean = new MapperFactoryBean<MovieMapper>(MovieMapper.class);
 			factoryBean.setSqlSessionFactory(factory);
 			return factoryBean;
 		}
 		
 		@Bean
-		public MapperFactoryBean<TopMenuMapper> getTopMenuMapper(SqlSessionFactory factory) throws Exception{
-			MapperFactoryBean<TopMenuMapper> factoryBean = new MapperFactoryBean<TopMenuMapper>(TopMenuMapper.class);
+		public MapperFactoryBean<MovieMapper> getTopMenuMapper(SqlSessionFactory factory) throws Exception{
+			MapperFactoryBean<MovieMapper> factoryBean = new MapperFactoryBean<MovieMapper>(MovieMapper.class);
 			factoryBean.setSqlSessionFactory(factory);
 			return factoryBean;
 		}
