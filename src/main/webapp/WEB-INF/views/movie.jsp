@@ -16,7 +16,7 @@
 <body>
 	<div>
 		
-		<h1><img src="resources/logo.jpg" width="160px" height="74px">Movie chart</h1>
+		<h1>Movie chart</h1>
 	</div>
 	<input type="button" id="insert" value="저장">
 	<div id="container"></div>

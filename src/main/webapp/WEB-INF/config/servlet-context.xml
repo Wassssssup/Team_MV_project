@@ -6,9 +6,10 @@
 			 xsi:schemaLocation="http://www.springframework.org/schema/mvc
 			 					 http://www.springframework.org/schema/mvc/spring-mvc.xsd
 			 					 http://www.springframework.org/schema/beans
-			 					 http://www.springframework.org/schema/beans/spring-beans.xsd/
+			 					 http://www.springframework.org/schema/beans/spring-beans.xsd
 			 					 http://www.springframework.org/schema/context
 			 					 http://www.springframework.org/schema/context/spring-context.xsd">
+	
 	
 	<!-- 스캔한 패지키 내부의 클래스 중 Controller 어노테이션을 가지고 있는 클래스들을 Controller로 로딩하도록 한다 -->
 	<annotation-driven/>
@@ -26,16 +27,3 @@
 	<resources mapping="/resources/**" location="/resources/"/>
 	
 </beans:beans>
-
-
-
-
-
-
-
-
-
-
-
-
-
