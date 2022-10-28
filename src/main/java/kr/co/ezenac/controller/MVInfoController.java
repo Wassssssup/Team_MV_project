@@ -10,8 +10,6 @@ import org.jsoup.select.Elements;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.google.gson.Gson;
-
 import kr.co.ezenac.model.MovieDTO;
 
 public class MVInfoController {
@@ -45,7 +43,7 @@ public class MVInfoController {
 				
 				list.add(movieDto);
 			}
-				gson = new Gson().toJson(list);
+			/* gson = new Gson().toJson(list); */
 			
 		}catch (IOException e) {
 			e.printStackTrace();
