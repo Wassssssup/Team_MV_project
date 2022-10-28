@@ -16,22 +16,28 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.ezenac.model.MovieVO;
+import kr.co.ezenac.model.MuserVO;
 import kr.co.ezenac.model.NaverAPI;
 import kr.co.ezenac.persistance.MovieDAO;
+import kr.co.ezenac.persistance.MuserDAO;
+
 
 @Controller
 public class MovieController {
 	@Inject
 	MovieDAO dao;
 
+	@Inject
+	MuserDAO mdao;
+
 	@RequestMapping("/")
 	public String moviejsp() {
 		return "movie";
 	}
 
-	@ResponseBody
-	@RequestMapping("movie.json") // 
-	public ArrayList<MovieVO> movie() throws Exception { // 
+	@ResponseBody // �����͸� ��ȯ�ϴ� ������̼�
+	@RequestMapping("movie.json") // �ּҼ���
+	public ArrayList<MovieVO> movie() throws Exception { // �޼ҵ�
 		ArrayList<MovieVO> array = new ArrayList<MovieVO>();
 		Document doc = Jsoup.connect("http://www.cgv.co.kr/movies/").get();
 		Elements es = doc.select("ol");
@@ -68,13 +74,32 @@ public class MovieController {
 	}
 
 	@ResponseBody
+	@RequestMapping("list.json")
+	public List<MuserVO> mlist(String mrank) throws Exception {
+		return mdao.list(mrank);
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "minsert", method = RequestMethod.POST)
+	public void minsert(MuserVO vo) throws Exception {
+		mdao.insert(vo);
+	}
+
+	@ResponseBody
 	@RequestMapping("nmovie.json")
 	public String movieList(String keyword, String start) throws Exception {
 		String text = URLEncoder.encode(keyword, "UTF-8");
 		String apiURL = "https://openapi.naver.com/v1/search/movie.json?"; // json
+																			// ���
 		apiURL += "query=" + text;
 		apiURL += "&start=" + start;
 		apiURL += "$display=5";
 		return NaverAPI.search(apiURL);
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "mdelete", method = RequestMethod.POST)
+	public void mdelete(String mrank) throws Exception {
+		mdao.delete(mrank);
 	}
 }

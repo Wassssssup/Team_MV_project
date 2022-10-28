@@ -23,33 +23,8 @@
 	</beans:bean>
 	
 	<!-- 정적파일(이미지, 사운드, 동영상, JS, CSS 등등) 경로 셋팅 -->
-	<resources mapping="/**" location="/resources/"/>
+	<resources mapping="/resources/**" location="/resources/"/>
 	
-	<!-- properties 파일의 내용을 사용할 수 있도록 Bean을 정의한다 -->
-	<beans:bean class='org.springframework.beans.factory.config.PropertyPlaceholderConfigurer'>
-		<beans:property name="location">
-			<beans:value>/WEB-INF/properties/db.properties</beans:value>
-		</beans:property>
-	</beans:bean>
-	
-	<!-- 데이터베이스 접속 정보를 관리하는 객체-->
-	<beans:bean class='org.apache.commons.dbcp2.BasicDataSource' id='dataSource'>
-		<beans:property name='driverClassName' value='${db.classname}'/>
-		<beans:property name="url" value="${db.url}"/>
-		<beans:property name="username" value='${db.username}'/>
-		<beans:property name="password" value='${db.password}'/>
-	</beans:bean>
-	<!-- 데이터 베이스 접속 정보와 mapper 파일을 관리하는 Bean 입니다. -->
-	<beans:bean class='org.mybatis.spring.SqlSessionFactoryBean' id='sqlSession'>
-		<beans:property name="dataSource" ref='dataSource'/>
-		<beans:property name="configLocation" value="classpath:/WEB-INF/mybatis-config.xml"></beans:property>
-		<beans:property name="mapperLocations" value='/WEB-INF/mapper/*Mapper.xml'/>
-	</beans:bean>
-	<!-- 쿼리문을 전달하는 Bean 입니다. 이 Bean을 주입 받아 필요한 쿼리를 실행하게 됩니다. -->
-	<beans:bean class='org.mybatis.spring.SqlSessionTemplate' id='sqlSessionTemplate'>
-		<beans:constructor-arg index='0' ref='sqlSession'/>
-	</beans:bean>
-			 
 </beans:beans>
 
 
