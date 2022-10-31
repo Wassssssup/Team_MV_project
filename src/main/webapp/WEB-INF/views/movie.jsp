@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,16 +15,15 @@
 	rel="stylesheet" />
 </head>
 <body>
+	
 	<div>
-		
 		<h1>Movie chart</h1>
 	</div>
-	<input type="button" id="insert" value="저장">
 	<div id="container"></div>
-	<script id="temp" type="text/x-handlebars-template">
+	<script id="temp" type="text/javascript">
 		{{#each .}}
 			<div class="AA">
-				<div class="BB"><input type="checkbox"></div>
+				<div class="BB"></div>
 				<div class="rank">{{rank}}</div>
 				<a class="link" href="http://www.cgv.co.kr{{link}}" target="_blank"><img class="image" src="{{image}}"></a>
 				<div class="p">
@@ -38,7 +38,7 @@
 	<div id="review">
 		<span>review</span>
 		<div class="inreview"></div>
-		<script id="temp1" type="text/x-handlebars-template">
+		<script id="temp1" type="text/javascript">
 			{{#each .}}
 				<div><span class="una">{{username}}</span>
 				<span class="uco">{{content}}</span></div>
@@ -55,7 +55,7 @@
 
 	<div class="right_btn" style="margin-top: 0;">
 		<table id="reservation"></table>
-		<script id="temp-r" type="text/x-handlebars-template">
+		<script id="temp-r" type="text/javascript">
 		{{#each .}}
 			<tr class="reserA">
 				<td class="title title2" rank="{{rank}}">{{title}}</td>
@@ -75,7 +75,7 @@
 		검색어: <input type="text" id="keyword" value=""> <input
 			type="button" value="검색" id="btnsearch">
 		<table id="tbl" border=1 width=350></table>
-		<script id="temp2" type="text/x-handlebars-template">
+		<script id="temp2" type="text/javascript">
 		<tr>
 			<td width=100>제목</td>
 			<td>주연</td>
