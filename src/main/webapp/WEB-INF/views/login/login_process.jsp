@@ -30,7 +30,7 @@ boolean result= mDAO.memberLogin(mlVO); //DB
 if(result ){
 	session.setMaxInactiveInterval(60*60);//요청이 끝난 다음에 다음 요청이 발생하기전까지의 시간.
 	session.setAttribute("id",id);//세션에 값을 저장
-	response.sendRedirect( "http://localhost/Team_MV_project/views/main.jsp");
+	response.sendRedirect( "http://localhost/Team_MV_project/views/movie.jsp");
 	}else{%>
 	alert("아이디 비밀번호를 확인해주세요.")
 	response.sendRedirect( "login.jsp");
