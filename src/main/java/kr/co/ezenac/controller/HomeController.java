@@ -11,6 +11,6 @@ public class HomeController {
 	public String home() {
 		System.out.println("home");
 		
-		return "index";	
+		return "movie";	
 	}
 }
