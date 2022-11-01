@@ -5,17 +5,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-//폴더 지정
-@RequestMapping("/user")
+@RequestMapping("/login")
 public class UserController {
 
 	@GetMapping("/login")
 	public  String login() {
-		return "user/login";
+		return "login/login";
 	}
 	
 	@GetMapping("/join")
 	public String join() {
-		return "user/join";
+		return "login/join";
+	}
+	
+	@GetMapping("/find")
+	public String find() {
+		return "login/find";
 	}
 }

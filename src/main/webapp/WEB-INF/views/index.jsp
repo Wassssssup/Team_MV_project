@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="user/login">로그인</a><br/>
-	<a href="user/join">회원가입</a><br/>
+	<a href="login/login">로그인</a><br/>
+	<a href="login/join">회원가입</a><br/>
 </body>
 </html>

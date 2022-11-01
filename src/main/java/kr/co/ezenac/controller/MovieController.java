@@ -35,9 +35,9 @@ public class MovieController {
 		return "movie";
 	}
 
-	@ResponseBody // �����͸� ��ȯ�ϴ� ������̼�
-	@RequestMapping("movie.json") // �ּҼ���
-	public ArrayList<MovieVO> movie() throws Exception { // �޼ҵ�
+	@ResponseBody //
+	@RequestMapping("movie.json") // 
+	public ArrayList<MovieVO> movie() throws Exception { // 
 		ArrayList<MovieVO> array = new ArrayList<MovieVO>();
 		Document doc = Jsoup.connect("http://www.cgv.co.kr/movies/").get();
 		Elements es = doc.select("ol");
@@ -90,7 +90,7 @@ public class MovieController {
 	public String movieList(String keyword, String start) throws Exception {
 		String text = URLEncoder.encode(keyword, "UTF-8");
 		String apiURL = "https://openapi.naver.com/v1/search/movie.json?"; // json
-																			// ���
+																			
 		apiURL += "query=" + text;
 		apiURL += "&start=" + start;
 		apiURL += "$display=5";
